@@ -28,6 +28,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
+          git config --global http.postBuffer 1048576000
 
       - name: Make changes
         run: |
@@ -38,6 +39,7 @@ jobs:
           rm -rf build-tools/.git
           git clone "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" --depth=1 --branch=main
           rm -rf aarch64-linux-android-4.9/.git
+          du -h -d 1 ./
 
       - name: Commit changes
         id: commit
